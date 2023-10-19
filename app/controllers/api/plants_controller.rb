@@ -12,12 +12,14 @@ class Api::PlantsController < ApplicationController
   def new
     @form_method = :post
     @form_url = api_plants_path
+
     @plant_biology = Plant::Biology.new
   end
 
   def create
     @form_method = :post
     @form_url = api_plants_path
+
     @plant_biology = Plant::Biology.new(plant_biology_params)
 
     if @plant_biology.save
@@ -36,7 +38,7 @@ class Api::PlantsController < ApplicationController
   def update
     @form_method = :patch
     @form_url = api_plant_path(params[:id])
-    @plant_biology = Plant::Biology.find(params[:id])
+    @plant_biology = Plant::Biology.find(params[:id]
 
     if @plant_biology.update(plant_biology_params)
       redirect_to api_plants_path

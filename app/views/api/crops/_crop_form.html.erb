@@ -1,0 +1,33 @@
+<%= form_with model: @plant_crop, url: @form_url, method: @form_method do |form| %>
+  
+    <div>
+      <%= form.label :nombre %>
+      <%= form.text_field :name %>
+    </div>
+  
+    <div>
+      <%= form.label :meses %>
+      <%= form.select :months, ['Enero', 'Febrero', 'Marzo'], {}, { multiple: true } %>
+    </div>
+  
+    <div>
+      <%= form.label :luna %>
+      <%= form.radio_button :moon, 'creciente' %>
+      <%= form.radio_button :moon, 'menguante' %>
+    </div>
+  
+    <% if @plant_crop.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@plant_crop.errors.count, "error") %> prohibieron que la planta sea guardada:</h2>
+        <ul>
+          <% @plant_crop.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    
+    <div>
+      <%= form.submit "Guardar cuidado" %>
+    </div>
+  <% end %>

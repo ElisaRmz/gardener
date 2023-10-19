@@ -23,14 +23,28 @@
       <th>Luna</th>
     </tr>
   </thead>
- 
+  <body>
+    <% if @plant_crop.present? %>
+      <% @plant_crop.each do |data| %>
+        <tr>
+          <td><%= data[:name] %></td>
+          <td><%= data[:month] %></td>
+          <td><%= data[:moon] %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </body>
 </table>
 
+<p><%= link_to "Añadir cuidado", new_api_crop_path(@plant_biology) %></p>
+
+ 
+
+<!
                   meses      |   luna
 sembrar        |  ene, feb   |   llena
 transplantar   |  ene, feb   |   llena
 podar          |  ene, feb   |   llena
-
 
       Siembra directa
       Siembra indirecta
@@ -39,3 +53,4 @@ podar          |  ene, feb   |   llena
       recolección
       Poda
       Desniete
+>

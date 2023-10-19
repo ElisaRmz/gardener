@@ -12,5 +12,6 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :plants
+    resources :crops, only: [:new, :create]
   end
 end
