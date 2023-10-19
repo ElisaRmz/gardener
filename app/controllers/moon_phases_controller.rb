@@ -1,6 +1,10 @@
 require 'lunartic'
 
 class MoonPhasesController < ApplicationController
+  def go_back
+    redirect_back(fallback_location: root_path)
+  end
+
   def index
     moon_today = Lunartic.today
     phase_today = moon_today.phase   #key

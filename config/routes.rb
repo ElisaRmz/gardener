@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   root "main_pages#index"
 
   get "/moon_phases", to: "moon_phases#index"
+
+  get '/go_back', to: 'main_pages#index', as: :go_back
 end
