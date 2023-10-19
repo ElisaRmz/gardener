@@ -1,2 +1,21 @@
-<h1>Fase Lunar</h1>
-<p>La fase lunar actual es <%= @phase %> => día <%= @date %></p>
+<h1>Fase Lunar de hoy:  <%= @translated_phase_today %></h1>
+
+<h2>Próximas fases de la luna</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Fecha</th>
+      <th>Fase de la luna</th>
+      <th>Día lunar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @moon_data.each do |data| %>
+      <tr>
+        <td><%= data[:date] %></td>
+        <td><%= data[:phase] %></td>
+        <td><%= data[:day] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

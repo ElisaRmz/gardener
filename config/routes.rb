@@ -4,5 +4,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
+  root "main_pages#index"
+
   get "/moon_phases", to: "moon_phases#index"
 end
