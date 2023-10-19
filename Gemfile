@@ -51,6 +51,8 @@ gem "bootsnap", require: false
 # Estimate the phase of the moon on any date [https://rubydoc.info/gems/lunartic/file/README.md]
 gem "lunartic"
 
+gem "devise"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]

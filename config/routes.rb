@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
@@ -10,12 +11,9 @@ Rails.application.routes.draw do
 
   get '/go_back', to: 'main_pages#index', as: :go_back
 
-  namespace :api do
-    resources :users
-    resources :lands
-    resources :seeded_plants
-    resources :seeded_plant_care_tasks
-    resources :plants
-    resources :plant_cares
-  end
+  resources :lands
+  resources :seeded_plants
+  resources :seeded_plant_care_tasks
+  resources :plants
+  resources :plant_cares
 end
