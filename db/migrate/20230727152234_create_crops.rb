@@ -4,7 +4,7 @@ class CreateCrops < ActiveRecord::Migration[7.0]
       t.string :name
       t.string :month
       t.string :moon
-      t.references :biology, foreign_key: true
+      t.references :plant, foreign_key: true
 
       t.timestamps
     end

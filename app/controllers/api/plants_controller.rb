@@ -2,27 +2,27 @@ class Api::PlantsController < ApplicationController
   before_action :set_options, only: [:new, :create, :edit, :update]
 
   def index
-    @plants = Plant::Biology.all
+    @plants = Plant.all
   end
 
   def show
-    @plant_biology = Plant::Biology.find(params[:id])
+    @plant = Plant.find(params[:id])
   end
 
   def new
     @form_method = :post
     @form_url = api_plants_path
 
-    @plant_biology = Plant::Biology.new
+    @plant = Plant.new
   end
 
   def create
     @form_method = :post
     @form_url = api_plants_path
 
-    @plant_biology = Plant::Biology.new(plant_biology_params)
+    @plant = Plant.new(plant_params)
 
-    if @plant_biology.save
+    if @plant.save
       redirect_to api_plants_path
     else
       render :new, status: 422
@@ -32,15 +32,15 @@ class Api::PlantsController < ApplicationController
   def edit
     @form_method = :patch
     @form_url = api_plant_path(params[:id])
-    @plant_biology = Plant::Biology.find(params[:id])
+    @plant = Plant.find(params[:id])
   end
 
   def update
     @form_method = :patch
     @form_url = api_plant_path(params[:id])
-    @plant_biology = Plant::Biology.find(params[:id])
+    @plant = Plant.find(params[:id])
 
-    if @plant_biology.update(plant_biology_params)
+    if @plant.update(plant_params)
       redirect_to api_plants_path
     else
       render :edit, status: 422
@@ -48,7 +48,7 @@ class Api::PlantsController < ApplicationController
   end
 
   def destroy
-    @plant = Plant::Biology.find(params[:id])
+    @plant = Plant.find(params[:id])
     @plant.destroy
 
     flash[:notice] = "Planta eliminada exitosamente."
@@ -58,8 +58,8 @@ class Api::PlantsController < ApplicationController
 
   private
 
-  def plant_biology_params
-    params.require(:plant_biology).permit(:name, :family, :light, :humidity, :root_depth, :root_diameter, :maximum_temperature, :minimum_temperature, :germination_temperature)
+  def plant_params
+    params.require(:plant).permit(:name, :family, :light, :humidity, :root_depth, :root_diameter, :maximum_temperature, :minimum_temperature, :germination_temperature)
   end
 
   def set_options

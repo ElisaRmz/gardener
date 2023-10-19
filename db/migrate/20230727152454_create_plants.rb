@@ -1,6 +1,6 @@
-class CreateBiologies < ActiveRecord::Migration[7.0]
+class CreatePlants < ActiveRecord::Migration[7.0]
   def change
-    create_table :biologies do |t|
+    create_table :plants do |t|
       t.string :name
       t.string :family
       t.string :light

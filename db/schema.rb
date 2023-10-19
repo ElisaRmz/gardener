@@ -11,7 +11,17 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2023_07_27_152454) do
-  create_table "biologies", force: :cascade do |t|
+  create_table "crops", force: :cascade do |t|
+    t.string "name"
+    t.string "month"
+    t.string "moon"
+    t.integer "plant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["plant_id"], name: "index_crops_on_plant_id"
+  end
+
+  create_table "plants", force: :cascade do |t|
     t.string "name"
     t.string "family"
     t.string "light"
@@ -25,15 +35,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_27_152454) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "crops", force: :cascade do |t|
-    t.string "name"
-    t.string "month"
-    t.string "moon"
-    t.integer "biology_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["biology_id"], name: "index_crops_on_biology_id"
-  end
-
-  add_foreign_key "crops", "biologies"
+  add_foreign_key "crops", "plants"
 end

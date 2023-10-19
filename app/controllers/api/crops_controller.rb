@@ -3,18 +3,19 @@ class Api::CropsController < ApplicationController
   
   def new
     @form_method = :post
-    @form_url = api_crops_path
-    @plant_crop = Plant::Crop.new
+    @form_url = api_plant_crops_path
+    @crop = Crop.new
   end
 
   def create
     @form_method = :post
-    @form_url = api_crops_path
+    @form_url = api_plant_crops_path
 
-    @plant_crop = Plant::Crop.new(plant_crop_params)
-
-    if @plant_crop.save
-      redirect_to api_crops_path
+    @plant = Plant.find(params[:plant_id])
+    @crop = @plant.crops.build(crop_params)
+    binding.pry
+    if @crop.save
+      redirect_to api_plant_path(@plant)
     else
       render :new, status: 422
     end
@@ -22,8 +23,9 @@ class Api::CropsController < ApplicationController
 
   private
 
-  def plant_crop_params
-    params.require(:plant_crop).permit(:name, :month, :moon)
+  def crop_params
+    # añadir tabla con los meses, un cuidado tiene varios meses
+    params.require(:crop).permit(:name, :moon)
   end
 
   def set_options
