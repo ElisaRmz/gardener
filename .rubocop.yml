@@ -1,0 +1,10 @@
+Style/StringLiterals:
+  EnforcedStyle: double_quotes # Fuerza el uso de comillas dobles
+  Enabled: true # Activa la regla (si ya está presente en el archivo)
+  AutoCorrect: true # Permite autocorrección (opcional)
+  Include:
+    - Gemfile # Solo aplicar en el archivo Gemfile
+
+Metrics/MethodLength:
+  Enabled: true # Activa la regla (si ya está presente en el archivo)
+  Max: 11 # Longitud máxima predeterminada de los métodos

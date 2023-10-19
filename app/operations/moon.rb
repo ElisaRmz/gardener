@@ -1,18 +1,22 @@
 class Moon
-  attr_accessor :phase, :day
+  def initialize
+    @moon = Lunartic.today
+  end
 
-  def initialize(phase, day)
-    @phase = phase
-    @day = day
+  def cycle
+    Array.new(29) do |n|
+      date = @moon.date + n
+      moon = Lunartic.on_date(date)
+      translated_phase = translate_phase(moon.phase)
+      { date: date, phase: translated_phase, day: moon.day }
+    end
+  end
+
+  def translated_phase_today
+    translate_phase(@moon.phase)
   end
 
   private
-
-  def today_moon
-    moon_today = Lunartic.today
-    phase_today = moon_today.phase   # key
-    @translated_phase_today = translate_phase(phase_today)
-  end
 
   def translate_phase(phase)
     translations = {
