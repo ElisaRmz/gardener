@@ -10,15 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_27_152454) do
-  create_table "crops", force: :cascade do |t|
+ActiveRecord::Schema[7.0].define(version: 2023_08_31_173741) do
+  create_table "lands", force: :cascade do |t|
+    t.string "name"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_lands_on_user_id"
+  end
+
+  create_table "plant_cares", force: :cascade do |t|
     t.string "name"
     t.string "month"
     t.string "moon"
     t.integer "plant_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["plant_id"], name: "index_crops_on_plant_id"
+    t.index ["plant_id"], name: "index_plant_cares_on_plant_id"
   end
 
   create_table "plants", force: :cascade do |t|
@@ -35,5 +43,34 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_27_152454) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "crops", "plants"
+  create_table "seeded_plant_care_tasks", force: :cascade do |t|
+    t.datetime "done"
+    t.integer "seeded_plant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["seeded_plant_id"], name: "index_seeded_plant_care_tasks_on_seeded_plant_id"
+  end
+
+  create_table "seeded_plants", force: :cascade do |t|
+    t.string "description"
+    t.integer "land_id"
+    t.integer "plant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["land_id"], name: "index_seeded_plants_on_land_id"
+    t.index ["plant_id"], name: "index_seeded_plants_on_plant_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.integer "password"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "lands", "users"
+  add_foreign_key "plant_cares", "plants"
+  add_foreign_key "seeded_plant_care_tasks", "seeded_plants"
+  add_foreign_key "seeded_plants", "lands"
+  add_foreign_key "seeded_plants", "plants"
 end

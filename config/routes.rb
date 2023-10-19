@@ -11,8 +11,11 @@ Rails.application.routes.draw do
   get '/go_back', to: 'main_pages#index', as: :go_back
 
   namespace :api do
-    resources :plants do
-      resources :crops, only: [:new, :create]
-    end
+    resources :users
+    resources :lands
+    resources :seeded_plants
+    resources :seeded_plant_care_tasks
+    resources :plants
+    resources :plant_cares
   end
 end
