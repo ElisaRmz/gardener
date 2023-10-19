@@ -1,4 +1,4 @@
-class Api::UsersController < ApplicationController
+class UsersController < ApplicationController
   def index
     @users = User.all
   end
@@ -10,14 +10,14 @@ class Api::UsersController < ApplicationController
   def new
     #@form_method = :post
     #@form_url = api_users_path
-
+binding.pry
     @user = User.new
   end
 
   def create
     #@form_method = :post
     #@form_url = api_users_path
-
+binding.pry
     @user = User.new(user_params)
 
     if @user.save
@@ -57,6 +57,6 @@ class Api::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :password)
+    params.require(:user).permit(:name, :email, :encrypted_password)
   end
 end

@@ -1,4 +1,4 @@
-class Api::PlantsController < ApplicationController
+class PlantsController < ApplicationController
   before_action :set_options, only: [:new, :create, :edit, :update]
 
   def index
@@ -26,7 +26,7 @@ class Api::PlantsController < ApplicationController
       redirect_to api_plants_path
     else
       render :new, status: 422
-    end 
+    end
   end
 
   def edit

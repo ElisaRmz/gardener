@@ -1,4 +1,4 @@
-class Api::CropsController < ApplicationController
+class CropsController < ApplicationController
   before_action :set_options, only: [:new, :create, :edit, :update]
   
   def new
