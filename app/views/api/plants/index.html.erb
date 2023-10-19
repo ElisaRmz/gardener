@@ -15,11 +15,13 @@
 <table>
   <thead>
     <tr>
+      <th></th>
       <th>Nombre</th>
       <th>Familia</th>
       <th>Luz</th>
-      <th>Diámetro de raíz (m)</th>
+      <th>Humedad</th>
       <th>Profundidad de raíz</th>
+      <th>Diámetro de raíz (m)</th>
       <th>Tª máxima (ºC)</th>
       <th>Tª mínina (ºC)</th>
       <th>Tª germinación (ºC)</th>
@@ -37,7 +39,8 @@
         </td>
         <td><%= link_to data[:name], api_plant_path(data[:id]) %></td>
         <td><%= data[:family] %></td>
-        <td><%= data[:luz] %></td>
+        <td><%= data[:light] %></td>
+        <td><%= data[:humidity] %></td>
         <td><%= data[:root_depth] %></td>
         <td><%= data[:root_diameter] %></td>
         <td><%= data[:maximum_temperature] %></td>

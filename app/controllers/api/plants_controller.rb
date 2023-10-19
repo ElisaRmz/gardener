@@ -8,9 +8,9 @@ class Api::PlantsController < ApplicationController
   end
 
   def new
-    @light_options = ["Sombra", "Media sombra", "Sol"]
-    @humidity_options = ["Baja", "Media", "Alta"]
-    @root_options = ["Superficial", "Profunda", "Moderada"]
+    @light_options = ["-", "Sombra", "Media sombra", "Sol"]
+    @humidity_options = ["-", "Baja", "Media", "Alta"]
+    @root_options = ["-", "Superficial", "Profunda", "Moderada"]
     @plant = Plant::Biology.new
   end
 
