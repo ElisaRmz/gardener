@@ -26,13 +26,13 @@
   </div>
 
   <div>
-    <%= form.label :diámetro_de_raíz_metros %>
-    <%= form.number_field :root_diameter, step: "0.1" %>
+    <%= form.label :profundidad_de_raíz %>
+    <%= form.select :root_depth, @root_options %>
   </div>
 
   <div>
-    <%= form.label :profundidad_de_raíz %>
-    <%= form.select :root_depth, @root_options %>
+    <%= form.label :diámetro_de_raíz_metros %>
+    <%= form.number_field :root_diameter, step: "0.1" %>
   </div>
 
   <div>

@@ -51,6 +51,6 @@ class Api::PlantsController < ApplicationController
   private
 
   def plant_biology_params
-    params.require(:plant_biology).permit(:name, :family, :light, :humidity, :root_diameter, :root_depth, :maximum_temperature, :minimum_temperature, :germination_temperature)
+    params.require(:plant_biology).permit(:name, :family, :light, :humidity, :root_depth, :root_diameter, :maximum_temperature, :minimum_temperature, :germination_temperature)
   end
 end

@@ -16,11 +16,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_27_152454) do
     t.string "family"
     t.string "light"
     t.string "humidity"
-    t.integer "root_diameter"
     t.string "root_depth"
+    t.integer "root_diameter"
     t.integer "maximum_temperature"
-    t.integer "minimun_temperature"
-    t.integer "germation_temperature"
+    t.integer "minimum_temperature"
+    t.integer "germination_temperature"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

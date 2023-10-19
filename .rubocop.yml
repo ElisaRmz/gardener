@@ -1,3 +1,6 @@
+AllCops:
+  TargetRubyVersion: 3.2
+  
 Style/StringLiterals:
   EnforcedStyle: double_quotes # Fuerza el uso de comillas dobles
   Enabled: true # Activa la regla (si ya está presente en el archivo)
