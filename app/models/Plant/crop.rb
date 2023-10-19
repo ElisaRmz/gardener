@@ -6,5 +6,5 @@ class Plant::Crop < ApplicationRecord
 
   validates :moon, presence: true, inclusion: { in: %w[nueva llena menguante creciente], message: "%{value} is not valid" }
 
-  belongs_to :plant_biology
+  belongs_to :plant_biology, class_name: 'Plant::Biology'
 end

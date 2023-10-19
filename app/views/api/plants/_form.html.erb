@@ -1,0 +1,62 @@
+<%= form_with model: @plant_biology, url: @form_url, method: @form_method do |form| %>
+  
+  <div>
+    <%= form.label :nombre %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :familia %>
+    <%= form.text_field :family %>
+  </div>
+
+  <div>
+    <%= form.label :luz%>
+    <%= form.select :light, @light_options %>
+  </div>
+
+  <div>
+    <%= form.label :humedad %>
+    <%= form.select :humidity, @humidity_options %>
+  </div>
+
+  <div>
+    <%= form.label :profundidad_de_raíz %>
+    <%= form.select :root_depth, @root_options %>
+  </div>
+
+  <div>
+    <%= form.label :diámetro_de_raíz_metros %>
+    <%= form.number_field :root_diameter, step: "0.1" %>
+  </div>
+
+  <div>
+    <%= form.label :temperatura_máxima_C %>
+    <%= form.number_field :maximum_temperature %>
+  </div>
+
+  <div>
+    <%= form.label :temperatura_mínima_C %>
+    <%= form.number_field :minimum_temperature %>
+  </div>
+
+  <div>
+    <%= form.label :temperatura_de_germinación_C %>
+    <%= form.number_field :germination_temperature %>
+  </div>
+
+  <% if @plant_biology.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@plant_biology.errors.count, "error") %> prohibieron que la planta sea guardada:</h2>
+      <ul>
+        <% @plant_biology.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div>
+    <%= form.submit "Guardar planta" %>
+  </div>
+<% end %>

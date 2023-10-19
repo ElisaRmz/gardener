@@ -1,17 +1,17 @@
 <p><%= link_to "Plantas", api_plants_path%></p>
 
-<h1><%= @plant[:name] %></h1>
+<h1><%= @plant_biology[:name] %></h1>
 
 <h2>Biología</h2>
 
-<p>Familia: <%= @plant.family %></p>
-<p>Luz: <%= @plant.light %></p>
-<p>Humedad: <%= @plant.humidity %></p>
-<p>Profundidad de raíz: <%= @plant.root_depth %></p>
-<p>Diámetro de raíz: <%= @plant.root_diameter %> metros</p>
-<p>Tª máxima: <%= @plant.maximum_temperature %> ºC</p>
-<p>Tª mínina: <%= @plant.minimum_temperature %> ºC</p>
-<p>Tª germinación: <%= @plant.germination_temperature %> ºC</p>
+<p>Familia: <%= @plant_biology.family %></p>
+<p>Luz: <%= @plant_biology.light %></p>
+<p>Humedad: <%= @plant_biology.humidity %></p>
+<p>Profundidad de raíz: <%= @plant_biology.root_depth %></p>
+<p>Diámetro de raíz: <%= @plant_biology.root_diameter %> metros</p>
+<p>Tª máxima: <%= @plant_biology.maximum_temperature %> ºC</p>
+<p>Tª mínina: <%= @plant_biology.minimum_temperature %> ºC</p>
+<p>Tª germinación: <%= @plant_biology.germination_temperature %> ºC</p>
 
 <h2>Cuidados</h2>
 
