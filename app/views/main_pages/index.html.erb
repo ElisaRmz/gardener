@@ -1,16 +1,38 @@
+Objetivo: conocer los cuidados de las plantas en función de la fase lunar
+
 <h1>Fase Lunar</h1>
 <%= render "moon/today_moon" %>>
 
-<p>añadir planta</p>
+<h2>Cuidados de hoy</h2>
 
-<p>mostrar tareas en función de la luna y del día</p>
+<table>
+  <thead>
+    <tr>
+      <th>Planta</th>
+      <th>Tarea</th>
+    </tr>
+  </thead>
+ 
+</table>
 
-Objetivo: conocer los cuidados de las plantas en función de la fase lunar
+  tareas_día = Array.new
 
-<p></p>
+      Siembra directa
+      Siembra indirecta
+      Reproducción por acodo
+      Transplante
+      recolección
+      Poda
+      Desniete
 
-<%= link_to "Fase lunar", moon_phases_path %>
-<%= link_to "Plantas", api_plants_path%>
+  if mes = mes_siembra
+    if  Luna = luna.planta 
+      tareas_día < planta.tarea
+    end
+  end
+
+<p><%= link_to "Fase lunar", moon_phases_path %></p>
+<p><%= link_to "Plantas", api_plants_path%></p>
 
 Cosas que quiero añadir:
 - Poder añadir registros (trabajo|Fecha|Planta|Notas)

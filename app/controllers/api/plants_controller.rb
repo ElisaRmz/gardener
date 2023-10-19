@@ -1,32 +1,36 @@
 class Api::PlantsController < ApplicationController
   def index
-    @plants = Api::PlantsController::PlantBiology.all
+    @plants = Plant::Biology.all
   end
 
   def show
-    @plant = PlantBiology.find(params[:id])
+    @plant = Plant::Biology.find(params[:id])
   end
 
   def new
-    @plant = PlantBiology.new
+    @light_options = ["Sombra", "Media sombra", "Sol"]
+    @humidity_options = ["Baja", "Media", "Alta"]
+    @root_options = ["Superficial", "Profunda", "Moderada"]
+    @plant = Plant::Biology.new
   end
 
   def create
-    @plant = PlantBiology.new(plant_biology_params)
+    @plant = Plant::Biology.new(plant_biology_params)
 
     if @plant.save
-      redirect_to @plant
+      redirect_to api_plants_path
     else
+      flash[:alert] = "No se pudo guardar la planta debido a errores de validación"
       render :new
     end
   end
 
   def edit
-    @plant = PlantBiology.find(params[:id])
+    @plant = Plant::Biology.find(params[:id])
   end
 
   def update
-    @plant = PlantBiology.find(params[:id])
+    @plant = Plant::Biology.find(params[:id])
 
     if @plant.update(plant_biology_params)
       redirect_to @plant
@@ -36,15 +40,17 @@ class Api::PlantsController < ApplicationController
   end
 
   def destroy
-    @plant = PlantBiology.find(params[:id])
+    @plant = Plant::Biology.find(params[:id])
     @plant.destroy
 
-    redirect_to @plants_path
+    flash[:notice] = "Planta eliminada exitosamente."
+
+    redirect_to api_plants_path
   end
 
   private
 
   def plant_biology_params
-    params.require(:PlantBiology).permit(:name, :family)
+    params.require(:plant_biology).permit(:name, :family, :light, :humidity, :root_diameter, :root_depth, :maximum_temperature, :minimum_temperature, :germination_temperature)
   end
-end 
+end

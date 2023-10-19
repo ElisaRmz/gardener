@@ -1,6 +1,14 @@
+<% if flash[:notice] %>
+  <div class="flash-message">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
 <%= link_to "Volver a la página anterior", go_back_path %>
 
 <h1>Plantas</h1>
+
+<%= link_to "Añadir planta", new_api_plant_path%>
 
 <h2>Biología</h2>
 
@@ -9,55 +17,33 @@
     <tr>
       <th>Nombre</th>
       <th>Familia</th>
+      <th>Luz</th>
+      <th>Diámetro de raíz (m)</th>
+      <th>Profundidad de raíz</th>
+      <th>Tª máxima (ºC)</th>
+      <th>Tª mínina (ºC)</th>
+      <th>Tª germinación (ºC)</th>
     </tr>
   </thead>
   <tbody>
     <% @plants.each do |data| %>
       <tr>
-        <td><%= data[:name] %></td>
+        <td>
+          <%= link_to "Editar", edit_api_plant_path(data) %>
+          <%= link_to "Borrar", api_plant_path(data), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "¿Quieres eliminar esta planta?"
+                  } %>
+        </td>
+        <td><%= link_to data[:name], api_plant_path(data[:id]) %></td>
         <td><%= data[:family] %></td>
+        <td><%= data[:luz] %></td>
+        <td><%= data[:root_diameter] %></td>
+        <td><%= data[:root_depth] %></td>
+        <td><%= data[:maximum_temperature] %></td>
+        <td><%= data[:minimun_temperature] %></td>
+        <td><%= data[:germation_temperature] %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<h2>Cuidados</h2>
-
-<table>
-  <thead>
-    <tr>
-      <th>Tarea</th>
-      <th>Meses</th>
-      <th>Luna</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @plants.each do |data| %>
-      <tr>
-        <td><%= data[:name] %></td>
-        <td><%= data[:family] %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-                  meses      |   luna
-sembrar        |  ene, feb   |   llena
-transplantar   |  ene, feb   |   llena
-podar          |  ene, feb   |   llena
-
-  tareas_día = Array.new
-
-      Siembra directa
-      Siembra indirecta
-      Reproducción por acodo
-      Transplante
-      recolección
-      Poda
-      Desniete
-
-  if mes = mes_siembra
-    if  Luna = luna.planta 
-      tareas_día < planta.tarea
-    end
-  end
