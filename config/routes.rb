@@ -9,4 +9,8 @@ Rails.application.routes.draw do
   get "/moon_phases", to: "moon_phases#index"
 
   get '/go_back', to: 'main_pages#index', as: :go_back
+
+  namespace :api do
+    resources :plants
+  end
 end

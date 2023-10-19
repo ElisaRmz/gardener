@@ -1,0 +1,63 @@
+<%= link_to "Volver a la página anterior", go_back_path %>
+
+<h1>Plantas</h1>
+
+<h2>Biología</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Familia</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @plants.each do |data| %>
+      <tr>
+        <td><%= data[:name] %></td>
+        <td><%= data[:family] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h2>Cuidados</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Tarea</th>
+      <th>Meses</th>
+      <th>Luna</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @plants.each do |data| %>
+      <tr>
+        <td><%= data[:name] %></td>
+        <td><%= data[:family] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+                  meses      |   luna
+sembrar        |  ene, feb   |   llena
+transplantar   |  ene, feb   |   llena
+podar          |  ene, feb   |   llena
+
+  tareas_día = Array.new
+
+      Siembra directa
+      Siembra indirecta
+      Reproducción por acodo
+      Transplante
+      recolección
+      Poda
+      Desniete
+
+  if mes = mes_siembra
+    if  Luna = luna.planta 
+      tareas_día < planta.tarea
+    end
+  end
