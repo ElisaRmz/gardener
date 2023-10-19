@@ -6,6 +6,6 @@ class Plant < ApplicationRecord
   validates :minimum_temperature, presence: true
   validates :germination_temperature, presence: true
 
-  has_many :crops, class_name: 'Crop', dependent: :destroy
-  #tiene muchos Lands
+  has_many :seeded_plants
+  has_many :plant_cares, dependent: :destroy
 end

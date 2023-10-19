@@ -26,7 +26,7 @@ class Api::PlantsController < ApplicationController
       redirect_to api_plants_path
     else
       render :new, status: 422
-    end
+    end 
   end
 
   def edit
@@ -51,7 +51,7 @@ class Api::PlantsController < ApplicationController
     @plant = Plant.find(params[:id])
     @plant.destroy
 
-    flash[:notice] = "Planta eliminada exitosamente."
+    flash[:notice] = "Planta eliminada con éxito."
 
     redirect_to api_plants_path
   end
