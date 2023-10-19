@@ -1,0 +1,24 @@
+<h1> Mi usuario </h1>
+
+<%= link_to "Añadir tierra", new_api_land_path(@land) %>
+<%= link_to "Añadir planta sembrada", new_api_seeded_plant_path(@seeded_plant) %>
+
+<p> Listado de seeded_plant separados por lands </p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Planta</th>
+      <th>Tarea</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @seeded_plant.present? %>
+      <% @seeded_plant.each do |seeded_plant| %>
+        <tr>
+          <td><%= seeded_plant.name %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
