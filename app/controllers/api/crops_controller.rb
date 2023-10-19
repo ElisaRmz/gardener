@@ -1,4 +1,6 @@
 class Api::CropsController < ApplicationController
+  before_action :set_options, only: [:new, :create, :edit, :update]
+  
   def new
     @form_method = :post
     @form_url = api_crops_path
@@ -22,5 +24,9 @@ class Api::CropsController < ApplicationController
 
   def plant_crop_params
     params.require(:plant_crop).permit(:name, :month, :moon)
+  end
+
+  def set_options
+    @month_options = %w[Enero Febrero Marzo Abril Mayo Junio Julio Agosto Septiembre Octubre Noviembre Diciembre]
   end
 end

@@ -6,19 +6,23 @@
     </div>
   
     <div>
-      <%= form.label :meses %>
-      <%= form.select :months, ['Enero', 'Febrero', 'Marzo'], {}, { multiple: true } %>
+      <%= form.label :meses %><br>
+      <% @month_options.each do |option| %>
+        <%= form.check_box :selected_options, { multiple: true }, option %>
+        <%= label_tag option %><br>
+      <% end %>
     </div>
   
     <div>
-      <%= form.label :luna %>
-      <%= form.radio_button :moon, 'creciente' %>
-      <%= form.radio_button :moon, 'menguante' %>
+      <%= form.label :moon, "Creciente" %>
+      <%= form.radio_button :moon, "creciente" %>
+      <%= form.label :moon, "Menguante" %>
+      <%= form.radio_button :moon, "menguante" %>
     </div>
   
     <% if @plant_crop.errors.any? %>
       <div id="error_explanation">
-        <h2><%= pluralize(@plant_crop.errors.count, "error") %> prohibieron que la planta sea guardada:</h2>
+        <h2><%= pluralize(@plant_crop.errors.count, "error") %> prohibieron que el cuidado sea guardado:</h2>
         <ul>
           <% @plant_crop.errors.full_messages.each do |message| %>
             <li><%= message %></li>
