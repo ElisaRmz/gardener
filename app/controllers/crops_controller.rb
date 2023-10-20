@@ -1,21 +1,21 @@
 class CropsController < ApplicationController
   before_action :set_options, only: [:new, :create, :edit, :update]
-  
+
   def new
     @form_method = :post
-    @form_url = api_plant_crops_path
+    @form_url = plant_crops_path
     @crop = Crop.new
   end
 
   def create
     @form_method = :post
-    @form_url = api_plant_crops_path
+    @form_url = plant_crops_path
 
     @plant = Plant.find(params[:plant_id])
     @crop = @plant.crops.build(crop_params)
-    binding.pry
+
     if @crop.save
-      redirect_to api_plant_path(@plant)
+      redirect_to plant_path(@plant)
     else
       render :new, status: 422
     end

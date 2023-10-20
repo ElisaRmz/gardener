@@ -20,7 +20,7 @@
     <%= binding.pry %>
       <% @users.each do |data| %>
         <tr>
-          <td><%= link_to data[:name], api_user_path(data[:id]) %></td>
+          <td><%= link_to data[:name], user_path(data[:id]) %></td>
           <td><%= data[:password] %></td>
         </tr>
       <% end %>
@@ -28,5 +28,5 @@
   </tbody>
 </table>
 
-<%= link_to "Añadir usuario", new_api_user_path(@user) %>
+<%= link_to "Añadir usuario", new_user_path(@user) %>
 

@@ -11,19 +11,19 @@ class PlantsController < ApplicationController
 
   def new
     @form_method = :post
-    @form_url = api_plants_path
+    @form_url = plants_path
 
     @plant = Plant.new
   end
 
   def create
     @form_method = :post
-    @form_url = api_plants_path
+    @form_url = plants_path
 
     @plant = Plant.new(plant_params)
 
     if @plant.save
-      redirect_to api_plants_path
+      redirect_to plants_path
     else
       render :new, status: 422
     end
@@ -31,17 +31,17 @@ class PlantsController < ApplicationController
 
   def edit
     @form_method = :patch
-    @form_url = api_plant_path(params[:id])
+    @form_url = plant_path(params[:id])
     @plant = Plant.find(params[:id])
   end
 
   def update
     @form_method = :patch
-    @form_url = api_plant_path(params[:id])
+    @form_url = plant_path(params[:id])
     @plant = Plant.find(params[:id])
 
     if @plant.update(plant_params)
-      redirect_to api_plants_path
+      redirect_to plants_path
     else
       render :edit, status: 422
     end
@@ -53,7 +53,7 @@ class PlantsController < ApplicationController
 
     flash[:notice] = "Planta eliminada con éxito."
 
-    redirect_to api_plants_path
+    redirect_to plants_path
   end
 
   private

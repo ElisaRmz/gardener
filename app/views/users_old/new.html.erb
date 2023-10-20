@@ -1,6 +1,6 @@
 <h1> Nuevo usuario </h1>
 
-<%= form_with(model: @user, url: api_users_path) do |form| %>
+<%= form_with(model: @user, url: users_path) do |form| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> han ocurrido al guardar el usuario:</h2>

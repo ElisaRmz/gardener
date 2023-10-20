@@ -8,7 +8,7 @@
 
 <h1>Plantas</h1>
 
-<%= link_to "Añadir planta", new_api_plant_path %>
+<%= link_to "Añadir planta", new_plant_path %>
 
 <h2>Biología</h2>
 
@@ -32,14 +32,14 @@
     <% @plants.each do |data| %>
       <tr>
         <td>
-          <%= link_to "Editar", edit_api_plant_path(data) %>
-          <%= link_to "Borrar", api_plant_path(data), data: {
+          <%= link_to "Editar", edit_plant_path(data) %>
+          <%= link_to "Borrar", plant_path(data), data: {
                     turbo_method: :delete,
                     turbo_confirm: "¿Quieres eliminar esta planta?"
                   } %>
         </td>
         <td>. . .</td>
-        <td><%= link_to data[:name], api_plant_path(data[:id]) %></td>
+        <td><%= link_to data[:name], plant_path(data[:id]) %></td>
         <td><%= data[:family] %></td>
         <td><%= data[:light] %></td>
         <td><%= data[:humidity] %></td>

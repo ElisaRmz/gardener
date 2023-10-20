@@ -1,4 +1,4 @@
-<p><%= link_to "Plantas", api_plants_path%></p>
+<p><%= link_to "Plantas", plants_path%></p>
 
 <h1><%= @plant[:name] %></h1>
 
@@ -37,7 +37,7 @@
   </body>
 </table>
 
-<p><%= link_to "Añadir cuidado", new_api_plant_crop_path(@plant) %></p>
+<p><%= link_to "Añadir cuidado", new_plant_crop_path(@plant) %></p>
 
  Añadir proximas fechas con esa luna
 
