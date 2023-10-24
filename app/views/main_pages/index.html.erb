@@ -1,15 +1,18 @@
 <h1> MI JARDINERO </h1>
 
-Conoce los cuidados de las plantas en función de la fase lunar
+<p>Bienvenido <%= current_user.email %></p>
+
+<p>Conoce los cuidados de las plantas en función de la fase lunar</p>
 
 <p><%= link_to "Fases lunares", moon_phases_path %></p>
 <h2><%= render "moon/today_moon" %></h2>
 
-<p><%= link_to "Accede a tu cuenta", new_user_registration_path %>
-<%= link_to "Regístrate", new_user_session_path %></p>
+<% if user_signed_in? %>
+  <%= render "user/user_signed_in" %>
+<% end %>
 
 <ul>
 Cosas que quiero añadir:
-<li>Poder añadir registros (trabajo|Fecha|Planta|Notas)</li>
+<li>Poder añadir registros (Trabajo|Fecha|Planta|Notas)</li>
 <li>Enfermedades (tratamientos: probados)</li>
 </ul>

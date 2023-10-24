@@ -1,3 +1,12 @@
-<h1> New de Land </h1>
+<h1> Añade una nueva tierra </h1>
 
-<p> Añades el nombre de una nueva Land </p>
+<%= form_for @land do |f| %>
+  <div class="field">
+    <%= f.label :nombre %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Guardar" %>
+  </div>
+<% end %>

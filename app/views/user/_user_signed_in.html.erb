@@ -1,0 +1,14 @@
+<%= form_with do |form| %>
+
+  <p> Comienza a gestionar tus tierras </p>
+
+  <% if current_user.lands.present? %>
+    <% current_user.lands.each do |data| %>
+      <p>Nombre de la tierra: <%= data.name %></p>
+    <% end %>
+  <% else %>
+    <p> ----> Añade tu primera tierra <---- </p>
+  <% end %>
+
+  <p><%= link_to "Añadir nueva tierra", new_land_path %></p>
+<% end %>
